@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  docker-server:
+    container_name: docker-server
+    hostname: docker-server
+    image: caiyuan/docker:19.03.12-dind
+    privileged: true
+    environment:
+      DOCKER_TLS_CERTDIR: /certs
+    volumes:
+    - docker-certs-ca:/certs/ca:rw
+    - docker-certs-client:/certs/client:rw
+    networks:
+      local-net:
+        aliases: 
+        - docker
+  docker-client:
+    container_name: docker-client
+    hostname: docker-client
+    image: caiyuan/docker:19.03.12-zsh
+    environment:
+      DOCKER_TLS_CERTDIR: /certs
+    volumes:
+    - docker-certs-client:/certs/client:ro
+    networks:
+    - local-net
+    entrypoint: ["docker-entrypoint.sh"]
+    command: ["version"]
+
+volumes:
+  docker-certs-ca:
+  docker-certs-client:
+
+networks:
+  local-net:
+    driver: bridge
