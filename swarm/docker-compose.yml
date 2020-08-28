@@ -1,0 +1,53 @@
+version: "3.8"
+services:
+  s1:
+    container_name: s1
+    hostname: s1
+    image: caiyuan/docker:19.03.12-dind
+    privileged: true
+    networks:
+    - server-net
+    volumes:
+    - server-vol:/share:rw
+  s2:
+    container_name: s2
+    hostname: s2
+    image: caiyuan/docker:19.03.12-dind
+    privileged: true
+    networks:
+    - server-net
+    volumes:
+    - server-vol:/share:rw
+  s3:
+    container_name: s3
+    hostname: s3
+    image: caiyuan/docker:19.03.12-dind
+    privileged: true
+    networks:
+    - server-net
+    volumes:
+    - server-vol:/share:rw
+  s4:
+    container_name: s4
+    hostname: s4
+    image: caiyuan/docker:19.03.12-dind
+    privileged: true
+    networks:
+    - server-net
+    volumes:
+    - server-vol:/share:rw
+  s5:
+    container_name: s5
+    hostname: s5
+    image: caiyuan/docker:19.03.12-dind
+    privileged: true
+    networks:
+    - server-net
+    volumes:
+    - server-vol:/share:rw
+
+networks:
+  server-net:
+
+volumes:
+  server-vol:
