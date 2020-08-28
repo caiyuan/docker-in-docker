@@ -5,7 +5,7 @@ docker-compose up -d
 docker-compose ps
 
 ##
-echo 'Wait for the daemon to be ready.'; sleep 15s;
+echo 'Wait for the daemon to be ready.'; sleep 60s;
 
 ##
 docker exec -it s1 docker swarm init
@@ -14,9 +14,10 @@ worker_token=$(docker exec -it s1 docker swarm join-token -q worker | sed 's/[^a
 
 ##
 docker exec -it s2 docker swarm join --token $manager_token s1:2377
-docker exec -it s3 docker swarm join --token $worker_token s1:2377
+docker exec -it s3 docker swarm join --token $manager_token s1:2377
 docker exec -it s4 docker swarm join --token $worker_token s1:2377
 docker exec -it s5 docker swarm join --token $worker_token s1:2377
+docker exec -it s6 docker swarm join --token $worker_token s1:2377
 
 ##
 docker exec -it s1 docker network ls

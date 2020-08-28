@@ -55,6 +55,17 @@ services:
     - server-net
     volumes:
     - server-vol:/share:rw
+  s6:
+    container_name: s6
+    hostname: s6
+    image: caiyuan/docker:19.03.12-dind
+    privileged: true
+    user: root
+    working_dir: /root
+    networks:
+    - server-net
+    volumes:
+    - server-vol:/share:rw
 
 networks:
   server-net:
