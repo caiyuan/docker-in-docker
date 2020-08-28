@@ -5,6 +5,8 @@ services:
     hostname: s1
     image: caiyuan/docker:19.03.12-dind
     privileged: true
+    user: root
+    working_dir: /root
     networks:
     - server-net
     volumes:
@@ -14,6 +16,8 @@ services:
     hostname: s2
     image: caiyuan/docker:19.03.12-dind
     privileged: true
+    user: root
+    working_dir: /root
     networks:
     - server-net
     volumes:
@@ -23,6 +27,8 @@ services:
     hostname: s3
     image: caiyuan/docker:19.03.12-dind
     privileged: true
+    user: root
+    working_dir: /root
     networks:
     - server-net
     volumes:
@@ -32,6 +38,8 @@ services:
     hostname: s4
     image: caiyuan/docker:19.03.12-dind
     privileged: true
+    user: root
+    working_dir: /root
     networks:
     - server-net
     volumes:
@@ -41,6 +49,8 @@ services:
     hostname: s5
     image: caiyuan/docker:19.03.12-dind
     privileged: true
+    user: root
+    working_dir: /root
     networks:
     - server-net
     volumes:

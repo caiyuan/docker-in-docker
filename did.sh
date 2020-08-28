@@ -22,3 +22,5 @@ docker run -it --rm --network some-network \
 
 docker rm -f some-docker
 docker network rm some-network
+docker volume rm some-docker-certs-ca
+docker volume rm some-docker-certs-client
