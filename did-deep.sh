@@ -42,5 +42,5 @@ docker exec -it docker-dind docker exec -it docker-2 \
     ip link | grep UP
 
 ##
-    docker rm -f docker-dind
-
+docker exec -it docker-dind \
+    docker rm -f docker-1 docker-2
