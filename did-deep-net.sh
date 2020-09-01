@@ -56,6 +56,9 @@ docker exec -it docker-dind docker exec -it docker-1 \
 docker exec -it docker-dind docker exec -it docker-1 \
     brctl show
 
+docker exec -it docker-dind docker exec -it docker-1 \
+    ip link | grep UP
+
 ##
 docker exec -it docker-dind docker exec -it docker-1 \
     docker rm -f busybox-1 busybox-2 busybox-3 busybox-4

@@ -25,4 +25,22 @@ sleep  5s; docker exec -it docker-dind docker exec -it docker-1 \
     wget -S -P /root 172.19.0.2:80
 
 ##
+echo 'docker-dind: brctl show'
+docker exec -it docker-dind \
+    brctl show
+
+echo 'docker-dind: ip link | grep UP'
+docker exec -it docker-dind \
+    ip link | grep UP
+
+echo 'docker-1: ip link | grep UP'
+docker exec -it docker-dind docker exec -it docker-1 \
+    ip link | grep UP
+
+echo 'docker-2: ip link | grep UP'
+docker exec -it docker-dind docker exec -it docker-2 \
+    ip link | grep UP
+
+##
     docker rm -f docker-dind
+
