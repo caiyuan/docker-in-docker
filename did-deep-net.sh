@@ -53,9 +53,11 @@ docker exec -it docker-dind docker exec -it docker-1 \
     docker network connect bridge busybox-4
 
 ##
+echo 'docker-1: brctl show'
 docker exec -it docker-dind docker exec -it docker-1 \
     brctl show
 
+echo 'docker-1: ip link | grep UP'
 docker exec -it docker-dind docker exec -it docker-1 \
     ip link | grep UP
 
@@ -65,3 +67,4 @@ docker exec -it docker-dind docker exec -it docker-1 \
 
 docker exec -it docker-dind docker exec -it docker-1 \
     docker system prune -a
+
