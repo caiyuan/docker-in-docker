@@ -60,6 +60,10 @@ docker exec -it docker-dind docker exec -it docker-3 \
     docker network connect bridge busybox-4
 
 ##
+echo 'docker-3: docker network ls'
+docker exec -it docker-dind docker exec -it docker-3 \
+    docker network ls
+
 echo 'docker-3: brctl show'
 docker exec -it docker-dind docker exec -it docker-3 \
     brctl show
