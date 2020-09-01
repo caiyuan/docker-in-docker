@@ -5,8 +5,6 @@ echo '移除以前的容器'
 
 docker rm -f docker-dind
 
-##
-
 echo
 echo '创建并启动容器'
 
