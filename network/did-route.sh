@@ -83,9 +83,13 @@ docker exec -it docker-dind docker exec -it docker-2 \
 
 echo
 echo '从 docker-2 busybox 访问 docker-1 busybox'
+echo
 
 docker exec -it docker-dind docker exec -it docker-2 \
     docker exec -it busybox traceroute 11.0.0.2
 
+echo
+
 docker exec -it docker-dind docker exec -it docker-2 \
     docker exec -it busybox ping 11.0.0.2
+
