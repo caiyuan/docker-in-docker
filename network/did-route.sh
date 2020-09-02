@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 echo
-echo '启动两台 docker 主机'
+echo '启动同网段内的两台 docker 主机'
 echo
 
 docker exec -it docker-dind \
