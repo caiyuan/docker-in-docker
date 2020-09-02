@@ -17,7 +17,12 @@ echo '在 docker-1 上启动 busybox 容器并使用自定义网桥'
 echo
 
 docker exec -it docker-dind docker exec -it docker-1 \
-    docker network create --driver bridge local-net
+    docker network create \
+    --driver bridge \
+    --subnet=172.28.0.0/16 \
+    --ip-range=172.28.0.0/24 \
+    --gateway=172.28.0.1 \
+    local-net
 
 docker exec -it docker-dind docker exec -it docker-1 \
     docker run --name busybox --network local-net -d caiyuan/busybox:1.32.0 sleep infinite
@@ -47,7 +52,7 @@ echo
 echo '为 docker-2 添加路由并访问 busybox 容器'
 
 docker exec -it docker-dind docker exec -it docker-2 \
-    ip route add 172.19.0.0/16 via 172.18.0.2 dev eth0
+    ip route add 172.28.0.0/16 via 172.18.0.2 dev eth0
 
 echo
 echo '  docker-2: (2)'
@@ -57,4 +62,4 @@ docker exec -it docker-dind docker exec -it docker-2 \
 
 echo
 docker exec -it docker-dind docker exec -it docker-2 \
-    ping 172.19.0.2
+    ping 172.28.0.2
