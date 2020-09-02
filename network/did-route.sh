@@ -70,7 +70,7 @@ docker exec -it docker-dind docker exec -it docker-2 \
     docker exec -it busybox ip route
 
 echo
-echo '为 docker-2 添加路由并访问 busybox 容器'
+echo '为 docker-2 添加路由'
 
 docker exec -it docker-dind docker exec -it docker-2 \
     ip route add 11.0.0.0/16 via 172.18.0.2 dev eth0
